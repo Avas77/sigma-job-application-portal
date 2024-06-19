@@ -21,11 +21,14 @@ const ApplicationForm = () => {
     mode: "uncontrolled",
     validate: zodResolver(schema),
   });
+
+  //mutation fns to perform mutation
   const { mutate: saveCandidate } = useMutation(saveCandidateInfo);
   const { mutate: emailMutate } = useMutation(checkEmailExists);
   const { mutate: updateCandidate } = useMutation(updateCandidateInfo);
 
   const handleFormValues = (values: ApplicationInputTypes) => {
+    //showAlert state signifies that a email already exists and the information for that candidate needs to be updated otherwise newly created
     if (showAlert) {
       updateCandidate(values, {
         onSuccess: () => {
@@ -57,6 +60,7 @@ const ApplicationForm = () => {
       },
       {
         onSuccess: (response) => {
+          //if response obj exist email exist otherwise it doesnot exist in db
           if (Object.keys(response?.data)?.length > 0) {
             setShowAlert(true);
           } else {

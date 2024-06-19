@@ -14,7 +14,7 @@ const EmailInput = ({
   showAlert,
 }: IEmailInputProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    form.getInputProps("email").onChange(event);
+    form.getInputProps("email").onChange(event); // calling onchange method of mantine form
     handleEmailInputChange(event);
   };
 
