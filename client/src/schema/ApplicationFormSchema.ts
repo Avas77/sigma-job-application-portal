@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+/* This TypeScript code snippet is defining a schema using Zod, which is a TypeScript-first schema
+declaration and validation library. */
 export const schema = z.object({
   firstName: z.string().min(1, { message: "First name is required" }),
   lastName: z.string().min(1, { message: "Last name is required" }),
