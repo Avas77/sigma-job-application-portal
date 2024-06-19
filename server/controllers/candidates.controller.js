@@ -1,5 +1,9 @@
 import candidateModel from "../db/models/candidate.js";
 
+/**
+ * The function creates a new candidate by saving the request body data to the database and sends back
+ * the created candidate with appropriate status codes.
+ */
 export const createCandidate = async (req, res) => {
   try {
     const candidate = await candidateModel.create(req.body);
@@ -9,6 +13,10 @@ export const createCandidate = async (req, res) => {
   }
 };
 
+/**
+ * The function `checkEmail` checks if a given email already exists in the candidateModel and sends the
+ * result as a response.
+ */
 export const checkEmail = async (req, res) => {
   const { email } = req.body;
 
@@ -28,6 +36,10 @@ export const checkEmail = async (req, res) => {
   }
 };
 
+/**
+ * The function `updateCandidateInfo` updates candidate information in a database and sends a success
+ * message or an error response.
+ */
 export const updateCandidateInfo = async (req, res) => {
   try {
     await candidateModel.update(req.body, {
