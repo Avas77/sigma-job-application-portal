@@ -7,10 +7,14 @@ import candidateRouter from "./routes/candidate.routes.js";
 const app = express();
 const PORT = 3000;
 
-app.use(cors());
-app.use(express.json());
-app.use("/api/v1/candidates", candidateRouter);
+app.use(cors()); //allows cross-origin requests to be made to the server
+app.use(express.json()); //middleware in Express that parses incoming requests with JSON payloads
+app.use("/api/v1/candidates", candidateRouter); // added route for candidate api
 
+/**
+ * The function `startServer` initializes the server by authenticating with a database, syncing models,
+ * and listening on a specified port.
+ */
 const startServer = async () => {
   try {
     await sequelize.authenticate();

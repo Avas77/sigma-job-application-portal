@@ -1,6 +1,9 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../connect.js";
 
+/* This code snippet is defining a Sequelize model for a "Candidates" table in a database. The model
+includes various fields such as firstName, lastName, phoneNumber, email, timeInterval, linkedin,
+github, and message, each with specific data types and validation rules. */
 const candidateModel = sequelize.define("Candidates", {
   firstName: {
     type: DataTypes.STRING,
@@ -47,7 +50,7 @@ const candidateModel = sequelize.define("Candidates", {
     validate: {
       isUrl: { msg: "LinkedIn profile must be a valid URL" },
       is: {
-        args: /^(https?:\/\/)?([\w]+\.)?linkedin\.com\/.*$/i,
+        args: /^(https?:\/\/)?([\w]+\.)?linkedin\.com\/.*$/i, //regex to check if a given link is a linkedin link or not
         msg: "LinkedIn profile must be a valid LinkedIn URL",
       },
     },
@@ -58,7 +61,7 @@ const candidateModel = sequelize.define("Candidates", {
     validate: {
       isUrl: { msg: "GitHub profile must be a valid URL" },
       is: {
-        args: /^(https?:\/\/)?([\w]+\.)?github\.com\/.*$/i,
+        args: /^(https?:\/\/)?([\w]+\.)?github\.com\/.*$/i, //regex to check if a given link is a github link or not
         msg: "GitHub profile must be a valid GitHub URL",
       },
     },
