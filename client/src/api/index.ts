@@ -1,8 +1,10 @@
 import axios from "axios";
 import { ApplicationInputTypes } from "../types/ApplicationInputTypes";
 
+const BASE_URL = import.meta.env.VITE_APP_URL;
+
 const httpRequest = axios.create({
-  baseURL: "http://localhost:3000/api/v1/",
+  baseURL: BASE_URL,
 });
 
 /**
