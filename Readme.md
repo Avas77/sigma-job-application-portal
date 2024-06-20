@@ -31,7 +31,7 @@ List of software and tools you need to install before setting up the project.
    yarn install
    ```
 
-3. Add .env file in the root server directory. You can use this sample .env varibles to run this server project or if you want to run MySql database locally enter these variables
+3. Add .env file in the root server directory. You can use this sample .env variables to run this server project or if you want to run MySql database locally enter these variables
 
    ```
    DATABASE_NAME="sql12714636"
@@ -54,6 +54,12 @@ List of software and tools you need to install before setting up the project.
    npm install
    # or if you are using yarn
    yarn install
+   ```
+
+3. Add .env file in the root client directory. You can add the server url as the environment variable. Example:
+
+   ```
+   VITE_APP_URL = "http://localhost:3000/api/v1/"
    ```
 
 ## Running the Project
@@ -87,9 +93,7 @@ List of software and tools you need to install before setting up the project.
 2. Start the client:
 
    ```sh
-   npm start
-   # or if you are using yarn
-   yarn start
+   npm run dev
    ```
 
 3. The client should now be running on `http://localhost:5173`.
