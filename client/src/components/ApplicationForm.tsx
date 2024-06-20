@@ -12,6 +12,7 @@ import { useMutation } from "react-query";
 import NotificationBanner from "./NotificationBanner";
 import { useState } from "react";
 import EmailInput from "./EmailInput";
+import { useDebouncedCallback } from "use-debounce";
 
 const ApplicationForm = () => {
   const [showSuccesBanner, setShowSuccesBanner] = useState(false);
@@ -21,12 +22,11 @@ const ApplicationForm = () => {
     mode: "uncontrolled",
     validate: zodResolver(schema),
   });
-
   //mutation fns to perform mutation
   const { mutate: saveCandidate } = useMutation(saveCandidateInfo);
   const { mutate: emailMutate } = useMutation(checkEmailExists);
   const { mutate: updateCandidate } = useMutation(updateCandidateInfo);
-
+  const debouncedfn = useDebouncedCallback(emailMutate, 1000);
   const handleFormValues = (values: ApplicationInputTypes) => {
     //showAlert state signifies that a email already exists and the information for that candidate needs to be updated otherwise newly created
     if (showAlert) {
@@ -54,7 +54,7 @@ const ApplicationForm = () => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const email = event.target.value;
-    emailMutate(
+    debouncedfn(
       {
         email,
       },
