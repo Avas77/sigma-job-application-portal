@@ -7,7 +7,7 @@ test("should create new candidate and save candidate info", async () => {
     firstName: "Kagaya",
     lastName: "narayan",
     phoneNumber: "9803190991",
-    email: "lover@gmail.com",
+    email: "kohli@gmail.com",
     timeInterval: "20",
     linkedin: "https://www.linkedin.com/in/avas-bajracharya-640357200/",
     github: "https://github.com/Avas77",
@@ -24,6 +24,17 @@ test("should return email if email already exists", async () => {
     .post("/api/v1/candidates/check-email")
     .send(payload)
     .expect(200);
+});
+
+test("should return empty object if email doesnot exist exists", async () => {
+  const payload = {
+    email: "lonavala@gmail.com",
+  };
+  const response = await request(app)
+    .post("/api/v1/candidates/check-email")
+    .send(payload)
+    .expect(200);
+  expect(response.body).toEqual({});
 });
 
 test("should update candidate info if email already exists", async () => {
